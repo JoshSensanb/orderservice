@@ -1,14 +1,24 @@
 package edu.iu.c322.orderservice.model;
 
-import java.util.ArrayList;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderId;
     private int customerId;
     private float total;
-    private ShippingAddress shippingAddress;
-    private ArrayList<Items> items;
+
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    private List<OrderItem> items;
+
+    @OneToOne(cascade = CascadeType.ALL)
+
     private Payment payment;
 
     public int getOrderId() {
@@ -35,19 +45,13 @@ public class Order {
         this.total = total;
     }
 
-    public ShippingAddress getShippingAddress() {
-        return shippingAddress;
-    }
 
-    public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
 
-    public ArrayList<Items> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Items> items) {
+    public void setItems(ArrayList<OrderItem> items) {
         this.items = items;
     }
 

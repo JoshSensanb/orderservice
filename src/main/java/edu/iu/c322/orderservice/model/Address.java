@@ -1,6 +1,15 @@
 package edu.iu.c322.orderservice.model;
 
-public class BillingAddress {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String state;
     private String city;
     private int postalCode;
