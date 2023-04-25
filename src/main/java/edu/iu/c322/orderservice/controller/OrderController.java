@@ -33,6 +33,11 @@ public class OrderController {
         Order addedOrder = orderRepository.save(order);
         return addedOrder.getId();
     }
+    @GetMapping("/findall")
+    public List<Order> getAll(){
+        List<Order> allOrders = orderRepository.findAll();
+        return allOrders;
+    }
 
     @GetMapping("/{orderId}")
     public List<Order> findByCustomer(@PathVariable int orderId){
