@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:rYWJhVuTf4LzyptY68BT@containers-us-west-4.railway.app:5638/railway
-    username: postgres
-    password: rYWJhVuTf4LzyptY68BT
-    name: railway
+    url: jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+    username: ${PROD_DB_USERNAME}
+    password: ${PROD_DB_PASSWORD}
+    name: order-service
 
     sql:
       init:
